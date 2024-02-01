@@ -1,0 +1,332 @@
+1. Ptr is a pointer that points to the variable var (ptr stores the address of that variable : int ptr = &var;); The expressionsptr, var and *(&var)mean the same thing : they are used to get the value stored in the variable var.
+1. Ptr е указател, който сочи към променливата var (ptr съхранява адреса на тази променлива: int ptr = &var;); Изразите sptr, var и *(&var) означават едно и също нещо: те се използват за получаване на стойността, съхранена в променливата var.
+
+2. While and do while loops are defined as control structures that repeat a block of code until the condition that is given is true. 
+
+The main difference between the two loops is that the body of the Do while loop will execute at least once, even if the condition is false. The while loop, on the other hand, only executes the body of the loop if the condition is true. While loop is entry-controlled and Do-while is exit controlled.
+2. Циклите while и do while се дефинират като контролни структури, които повтарят блок от код, докато даденото условие стане вярно.
+
+Основната разлика между двата цикъла е, че тялото на Do while цикъла ще се изпълни поне веднъж, дори ако условието е невярно. Цикълът while, от друга страна, изпълнява тялото на цикъла само ако условието е вярно. Докато цикълът се контролира при влизане, а Do-while се контролира при изход.
+
+3. A for loop in C++ is a repetition control structure which allows us to write a loop that is executed a specific number of times. The for loop is also called an Entry Controlled loop because the test expression is tested before entering the loop body.
+In for loop, a loop variable is used to control the loop. First initialize this loop variable to some value, then check whether this variable is less than or greater than counter value. If statement is true, then loop body is executed and loop variable gets updated. Steps are repeated until test expression evaluates to false.
+
+Цикълът for в C++ е структура за контрол на повторението, която ни позволява да напишем цикъл, който се изпълнява определен брой пъти. Цикълът for се нарича още цикъл с контролиран вход, защото тестовият израз се тества преди да влезе в тялото на цикъла.
+В цикъла for се използва променлива на цикъла за управление на цикъла. Първо инициализирайте тази променлива на цикъла до някаква стойност, след което проверете дали тази променлива е по-малка или по-голяма от стойността на брояча. Ако твърдението е вярно, тогава тялото на цикъла се изпълнява и променливата на цикъла се актуализира. Стъпките се повтарят, докато тестовият израз се изчисли като false.
+
+
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main()
+{
+    int i;
+    for(i=1; i<=10; i=i+1)
+    {
+        cout<<"Hello World\n";
+    }
+    return 0;
+}
+
+Let’s understand the above looping structure step by step.
+
+Initialization Expression: In the above example, int i=1; is our initialization expression. In this expression we have to initialize the loop variable to some value so that the loop will start from the initialized value. In the above example the loop will start from 1 and continues to execute until it crosses the value 10.
+Test Expression: In the above example, i<=10; is our test expression. The compiler will test the condition written in test expression. If the condition evaluates to true then the body of loop will execute and after that the program control will go to the update expression otherwise it will exit from the for loop.
+Update Expression: In the above example, i=i+1 is our update expression. After executing the body of the loop, the update expression increments the loop variable i by 1, and then move to test the condition written in test expression. If the condition evaluates to true, it will again execute the body of the loop and so on repeat the process until the test expression evaluates to false. When test expression evaluates to false, the loop terminates.
+
+C++ program to print the numbers from 1 to 10 on the screen using for loop.
+
+Цикълът for в C++ е структура за контрол на повторението, която ни позволява да напишем цикъл, който се изпълнява определен брой пъти. Цикълът for се нарича още цикъл с контролиран вход, защото тестовият израз се тества преди да влезе в тялото на цикъла.
+В цикъла for се използва променлива на цикъла за управление на цикъла. Първо инициализирайте тази променлива на цикъла до някаква стойност, след което проверете дали тази променлива е по-малка или по-голяма от стойността на брояча. Ако твърдението е вярно, тогава тялото на цикъла се изпълнява и променливата на цикъла се актуализира. Стъпките се повтарят, докато тестовият израз се изчисли като false.
+
+
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int main()
+{
+    int i;
+    for(i=1; i<=10; i=i+1)
+    {
+        cout<<i<<endl;
+    }
+    return 0;
+}
+
+In the above example, we have run a for loop from 1 to 10. Each time when the loop runs, we print the value of the variable i on the screen on a separate line using endl statement. The loop ends when the value of i is more than 10.
+В горния пример сме изпълнили for цикъл от 1 до 10. Всеки път, когато цикълът се изпълнява, ние отпечатваме стойността на променливата i на екрана на отделен ред, като използваме оператора endl. Цикълът завършва, когато стойността на i е повече от 10.
+
+4. Класа има състояни и функционалност. Функцията е нещото ,което може да прави. Когато е в един клас , всеки път извикваш функцията от класа без да я пишеш отново. тип инт и да я връща.
+Това може да се вика от всякъде където има достъп до тази функция и да се вземе цифрата и да се работи с нея
+
+int class::CalculateSquareRoot(int number)
+{
+return number*number;
+}
+
+
+5. Management: Stack memory is automatically managed by the system, whereas heap memory is dynamically allocated and deallovate by the garbage collector.
+In C++, memory management is one of the most important aspects of writing efficient, maintainable, and bug-free code. Manual memory management using raw pointers can be error-prone and lead to memory leaks, crashes, and other hard-to-trace issues.
+Understanding C++ Memory Management
+C++ memory management can be broadly divided into two categories: stack and heap memory. Stack memory is automatically managed by the compiler, and it is where local variables are stored. Heap memory, on the other hand, is manually managed by the programmer, and it is where dynamically allocated objects are stored.
+
+In C++, we can efficiently allocate the memory at runtime and deallocate it when not required. With this feature, we get the flexibility of allocation and deallocation of memory as per requirement. In this article on C++ memory management, we will learn about the dynamic allocation of memory and understand its working in detail.
+
+Memory management can be defined as a process in which management of a computer’s memory occurs, for example assigning memory to programs, variables etc., in such a way that it doesn’t affect the overall performance. Sometimes, the computer’s data can range up to terabytes, so efficient use of memory is necessary to minimize memory wastage and boost up performance.
+
+Memory management is required to ensure that there is no wastage of memory and that allocation takes place efficiently. The memory that a C++ program uses is divided into different parts. Here, we will discuss two, i.e. stack and heap.
+
+Stack: In stack, all the variables that are declared inside the function and other information related to the function are stored.
+Heap: Heap is unused memory and the part from where the memory is allocated dynamically when the program runs. 
+During the declaration of an array, there are times when the correct memory is not determined until runtime. To avoid such scenarios, we usually declare an array of the maximum size. However, because of this full size, some memory remains unused. For example, let us suppose we have declared an array of size 30, and after declaring the array, it turns out that we only need space of 10 size, so the rest of the space is of no use, or we can say it will get wasted. 
+
+To avoid such cases, we use memory allocation. We can allocate the memory at runtime from the heap using an operator.
+
+Управление: Паметта на стека се управлява автоматично от системата, докато паметта на стека се разпределя динамично и се освобождава от събирача на отпадъци.
+В C++ управлението на паметта е един от най-важните аспекти на писането на ефективен, поддържаем и без грешки код. Ръчното управление на паметта с помощта на необработени указатели може да бъде податливо на грешки и да доведе до изтичане на памет, сривове и други трудни за проследяване проблеми.
+Разбиране на C++ управление на паметта
+Управлението на паметта в C++ може да се раздели най-общо на две категории: stack и heap памет. Паметта на stack се управлява автоматично от компилатора и там се съхраняват локалните променливи. Heap паметта, от друга страна, се управлява ръчно от програмиста и там се съхраняват динамично разпределени обекти.
+
+В C++ можем ефективно да разпределим паметта по време на изпълнение и да я освободим, когато не е необходима. С тази функция получаваме гъвкавостта на разпределяне и освобождаване на памет според изискванията. В тази статия за управление на паметта на C++ ще научим за динамичното разпределение на паметта и ще разберем как работи в детайли.
+
+Управлението на паметта може да се дефинира като процес, при който се извършва управление на паметта на компютъра, например присвояване на памет на програми, променливи и т.н., по такъв начин, че да не се отразява на цялостната производителност. Понякога данните на компютъра могат да варират до терабайти, така че е необходимо ефективно използване на паметта, за да се минимизира загубата на памет и да се увеличи производителността.
+
+Управлението на паметта е необходимо, за да се гарантира, че няма загуба на памет и че разпределението се извършва ефективно. Паметта, която C++ програмата използва, е разделена на различни части. Тук ще обсъдим две, т.е. стек и куп.
+
+Стек: В стека се съхраняват всички променливи, които са декларирани във функцията и друга информация, свързана с функцията.
+Heap: Heap е неизползвана памет и частта, от която паметта се разпределя динамично, когато програмата се изпълнява.
+По време на декларирането на масив има моменти, когато правилната памет не се определя до момента на изпълнение. За да избегнем подобни сценарии, обикновено декларираме масив с максимален размер. Въпреки това, поради този пълен размер, част от паметта остава неизползвана. Например, да предположим, че сме декларирали масив с размер 30 и след като декларираме масива, се оказва, че имаме нужда само от пространство с размер 10, така че останалото пространство е безполезно или можем да кажем, че ще пропиляват се.
+
+За да избегнем подобни случаи, използваме разпределение на паметта. Можем да разпределим паметта по време на изпълнение от купчината с помощта на оператор.
+
+
+//конструктор създаваш обекта и инициализараш неговите полета. 
+деструктор освобождаваш ,задължително е програмиста да освободи паметта. 
+heap се пазят обекти, stack се пазят референции към обекти , примитивите.//
+
+
+
+6. //Класове. Всеки обект има свое състояние. Методи ,които променят. обекта.проперти//
+In general ,encapsulation is a process of wrapping similar code in one place. In C++,we can bundle data members and functions that operate together inside a single class. For example, class Rectangle.
+Като цяло, капсулирането е процес на опаковане на подобен код на едно място. В C++ можем да обединим членове с данни и функции, които работят заедно в един клас. Например, class Rectangle.
+
+{
+public:
+     int lenght;
+     int breadth;
+     int getArea() {return length*breadth;}
+};
+
+
+7. Exception handling in C++ is a particular condition for developers to handle. In programming, committing mistakes that prompt unusual conditions called errors is normal. All in all, these errors are of three kinds:
+Обработката на изключения в C++ е специално условие, което разработчиците трябва да обработват. В програмирането извършването на грешки, които предизвикват необичайни условия, наречени грешки, е нормално. Общо тези грешки са три
+
+Syntax Error
+Logical Error 
+Runtime Error
+What is Exception Handling in C++? 
+Exception handling in C++ is a mechanism that allows a program to deal with runtime errors and exceptional situations in a structured and controlled manner. In C++, exceptions are used to handle errors that occur during the execution of a program, such as division by zero, accessing invalid memory, or file I/O errors.
+
+The basic idea behind exception handling is to separate the normal flow of program execution from error-handling code. Instead of terminating the program abruptly when an error occurs, C++ provides a way to “throw” an exception, representing the error or exceptional condition. The thrown exception is then caught by appropriate “catch” blocks, where the program can handle the error gracefully.
+
+
+Basic Keywords in Exception Handling: 
+Exception Handling in C++ falls around these three keywords: 
+
+Какво е обработка на изключения в C++?
+Обработката на изключения в C++ е механизъм, който позволява на програмата да се справя с грешки по време на изпълнение и изключителни ситуации по структуриран и контролиран начин. В C++ изключенията се използват за обработка на грешки, които възникват по време на изпълнение на програма, като деление на нула, достъп до невалидна памет или файлови I/O грешки.
+
+Основната идея зад обработката на изключения е да се отдели нормалният поток на изпълнение на програмата от кода за обработка на грешки. Вместо внезапно прекратяване на програмата при възникване на грешка, C++ предоставя начин за „хвърляне“ на изключение, представляващо грешката или изключителното състояние. След това хвърленото изключение се улавя от подходящи блокове „catch“, където програмата може да се справи с грешката елегантно.
+
+
+Основни ключови думи при обработка на изключения:
+Обработката на изключения в C++ попада около тези три ключови думи:
+
+Throw
+Catch
+Try
+What is try throw catch in c++?
+In C++, try, throw, and catch are keywords used for exception handling. Exception handling allows developers to handle errors or exceptional situations gracefully and provide a structured way to manage unexpected conditions during the execution of a program.
+
+Here’s a brief explanation of each keyword:
+
+try: The code that might raise an exception is included within the try block. One or more catch blocks come after it. The program looks for a catch block that matches the try block when an exception is thrown within the try block in order to handle the exception.
+throw: To explicitly raise or throw an exception, use the throw keyword. In the try block, it is frequently employed when an exceptional circumstance arises. The control exits the try block when the throw statement is met in order to locate a suitable catch block to handle the exception.
+catch: The catch block follows the try block and is used to catch and handle exceptions. It contains code that executes when a specific type of exception is thrown within the associated try block. Multiple catch blocks can be used for different exception types.
+
+В C++, try, throw и catch са ключови думи, използвани за обработка на изключения. Обработката на изключения позволява на разработчиците да се справят грациозно с грешки или изключителни ситуации и предоставя структуриран начин за управление на неочаквани условия по време на изпълнение на програма.
+
+Ето кратко обяснение на всяка ключова дума:
+
+try: Кодът, който може да предизвика изключение, е включен в блока try. Един или повече блокове за улавяне идват след него. Програмата търси блок catch, който съвпада с блока try, когато в блока try е хвърлено изключение, за да обработи изключението.
+throw: За изрично повдигане или хвърляне на изключение, използвайте ключовата дума throw. В пробния блок той често се използва, когато възникне извънредно обстоятелство. Контролът излиза от блока try, когато операторът throw бъде изпълнен, за да намери подходящ блок catch за обработка на изключението.
+catch: Блокът catch следва блока try и се използва за прихващане и обработка на изключения. Той съдържа код, който се изпълнява, когато специфичен тип изключение е хвърлено в рамките на свързания блок за опит. Множество catch блокове могат да се използват за различни типове изключения.
+
+
+8. C++ vectors (also known as std::vector) are sequence containers that represent arrays that can change in size. They’re used to work with dynamic data, and they use contiguous storage locations for their elements. You can efficiently access the elements using offsets on regular pointers. Internally, C++ vectors use dynamically allocated arrays to store their elements. The array may require reallocation so it can grow in size when new elements are inserted.
+
+Vector containers may allocate additional storage space to accommodate for potential growth, so the container may have a larger capacity than what’s actually being stored inside of it. You can use libraries to apply different growth strategies to strike a balance between reallocations and memory usage, but reallocations should only happen at logarithmically growing intervals of size. This allows you to use amortized constant time complexity when inserting individual elements at the end of the vector.
+
+Since C++ vectors perform automatic reallocation, they’re able to manage storage and grow dynamically in an efficient way. Although they consume more memory than arrays, their efficiency and flexibility make using vectors worthwhile.
+
+Let’s discuss a few more benefits of C++ vector:
+
+There’s no maximum size, which is helpful if you don’t know how big your data will be beforehand
+Their resizing capabilities make it easier to handle dynamic elements
+Since C++ vector is a template class, you don’t have to type in the same code to handle different data
+Whenever the total amount of memory is used, automatic reallocation happens
+You can easily copy and assign other vectors
+
+C++ векторите (известни също като std::vector) са контейнери на последователности, които представляват масиви, които могат да променят размера си. Те се използват за работа с динамични данни и използват непрекъснати местоположения за съхранение на своите елементи. Можете ефективно да осъществявате достъп до елементите, като използвате отмествания на обикновени указатели. Вътрешно C++ векторите използват динамично разпределени масиви за съхраняване на своите елементи. Масивът може да изисква преразпределение, така че да може да нарасне по размер, когато се вмъкнат нови елементи.
+
+Векторните контейнери могат да разпределят допълнително пространство за съхранение, за да се приспособят за потенциален растеж, така че контейнерът може да има по-голям капацитет от това, което всъщност се съхранява вътре в него. Можете да използвате библиотеки, за да приложите различни стратегии за растеж, за да постигнете баланс между преразпределенията и използването на паметта, но преразпределенията трябва да се извършват само на логаритмично нарастващи интервали на размера. Това ви позволява да използвате амортизирана постоянна времева сложност, когато вмъквате отделни елементи в края на вектора.
+
+Тъй като C++ векторите извършват автоматично преразпределение, те могат да управляват съхранението и да растат динамично по ефективен начин. Въпреки че консумират повече памет от масивите, тяхната ефективност и гъвкавост правят използването на вектори полезно.
+
+Нека обсъдим още няколко предимства на C++ вектора:
+
+Няма максимален размер, което е полезно, ако не знаете колко големи ще бъдат вашите данни предварително
+Техните възможности за преоразмеряване улесняват работата с динамични елементи
+Тъй като C++ vector е шаблонен клас, не е нужно да въвеждате един и същ код, за да обработвате различни данни
+Когато се използва цялото количество памет, се извършва автоматично преразпределение
+Можете лесно да копирате и присвоявате други вектори
+
+9. //Пойнтер се ползва като трябва да предадеш стойността или да се нулира иначе// 
+Both references and pointers seem to be very similar on the surface; both are used to allow one variable provide access to another. For both having much of the same capabilities, it is often unclear what distinguishes these two systems. In this post, we will discuss the difference between pointers and references.
+И референциите, и указателите изглеждат много сходни на повърхността; и двете се използват, за да позволят на една променлива да предостави достъп до друга. Тъй като и двете имат почти еднакви възможности, често не е ясно какво отличава тези две системи. В тази публикация ще обсъдим разликата между указатели и препратки.
+
+1)Pointers
+A variable that holds the memory address of another variable is known as a pointer. To access the memory location that a pointer points to, it must be dereferenced with the * operator.
+Променлива, която съдържа адреса на паметта на друга променлива, е известна като указател. За достъп до мястото в паметта, към което сочи указателят, то трябва да бъде дереферентирано с оператора *.
+
+2)Reference
+A reference variable is an alias, or another name for a variable that already exists. A reference, like a pointer, is implemented by storing an object’s address.
+A reference can be thought of as a constant pointer (not to be confused with a constant value pointer!). The compiler can apply the * operator for you if you use automatic indirection.
+Референтната променлива е псевдоним или друго име за променлива, която вече съществува. Препратка, подобно на указател, се реализира чрез съхраняване на адреса на обект.
+Препратката може да се разглежда като постоянен указател (да не се бърка с указател на постоянна стойност!). Компилаторът може да приложи оператора * вместо вас, ако използвате автоматична индиректност.
+
+3)Differences
+1)A reference is a type of const pointer that automatically de-references itself. Yes, it is similar to a const pointer in that once a reference is attached to a variable or entity, it cannot be changed to point to anyone else.
+
+If you attempt to point an already initialised reference to another variable, it will not change its reference point instead, this type of assignment will only change the value of the variable to which the reference was pointing.
+
+In contrast, you can adjust the value of a pointer i.e, force a pointer to point to a new memory location at run time.
+1) Препратката е тип константен указател, който автоматично дереференцира себе си. Да, той е подобен на const указател, тъй като след като препратка е прикрепена към променлива или обект, тя не може да бъде променена, за да сочи към някой друг.
+
+Ако се опитате да посочите вече инициализирана препратка към друга променлива, тя няма да промени своята референтна точка вместо това, този тип присвояване ще промени само стойността на променливата, към която препратката сочи.
+
+За разлика от това, можете да коригирате стойността на указател, т.е. да принудите указател да сочи към ново място в паметта по време на изпълнение.
+
+Below is the implementation:
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int first_element = 50;
+    int second_element = 100;
+    // First, set Reference ref1 to point to a variable
+    // first_element
+    int& ref1 = first_element;
+    cout << "first element = " << first_element << endl;
+    cout << "second element = " << second_element << endl;
+    cout << "reference 1 = " << ref1 << endl;
+    /* If you attempt to point the reference ref 1 to
+     another variable, say second_element, it will not
+     change its reference point instead, this type of
+     assignment will only change the value of the variable
+     to which the reference was pointing.*/
+    ref1 = second_element;
+    cout
+        << "After modifying the reference 1 value , ref1 = "
+        << ref1 << endl;
+    cout << "first element = " << first_element << endl;
+    cout << "second element = " << second_element << endl;
+    // initializing a pointer that points to first value
+    int* ptr = &first_element;
+    cout << "pointer = " << ptr << " :: *ptr = " << (*ptr)
+         << endl;
+    // modifying the value of second element
+    second_element = 200;
+    ptr = &second_element;
+    cout << "pointer = " << ptr << " :: *ptr = " << (*ptr)
+         << endl;
+    return 0;
+}
+
+Output:
+
+first element = 50
+second element = 100
+reference 1 = 50
+After modifying the reference 1 value , ref1 = 100
+first element = 100
+second element = 100
+pointer = 0x7ffc457fec50 :: *ptr = 100
+pointer = 0x7ffc457fec54 :: *ptr = 200
+2)It is needed to initialise a reference while declaring it, i.e. A pointer, on the other hand, may be declared without being initialised. As a result, pointer may also be set to NULL. In contrast, it is not possible with a Reference.
+
+Example:
+
+int value = 100;
+int& reference = value; // correct way to initialize
+int& var; // it is wrong and it won't compile
+int* pointer; // correct way
+pointer = NULL; // Correct way
+reference = NULL; // it is wrong and it won't compile
+3)You cannot have a reference to a reference, but you can have a pointer to a pointer.
+3) Не можете да имате препратка към препратка, но можете да имате указател към указател.
+4)A pointer’s value can be incremented and decremented, and it can be used for random indexing, but this is not possible with a reference.
+4) Стойността на указателя може да се увеличава и намалява и може да се използва за произволно индексиране, но това не е възможно с препратка.
+Example:
+
+int* pointer = new int[100];
+*(pointer + 5) = 100;
+5)If you take a reference’s address, it will be identical to the address of the variable to which it is referring. In the case of a pointer, though, the situation is different.
+
+6)If pointers are allocated on heap, there is always a chance and extra effort to delete them. There may be issues such as memory leaks and hanging pointers. In the case of references, however, it is fine, and you do not need to be concerned with such issues.
+
+7)A pointer on the stack has its own memory address and size, while a reference on the stack has the same memory address (as the original variable) but takes up some stack space.
+
+8)Pointers can perform a variety of arithmetic operations, but there is no such thing as Reference Arithmetic. (However, as in &obj + 12, you can take the address of an object pointed by a reference and perform pointer arithmetic on it.)
+
+
+10. Template Types are an important part of Generic Programming in C++, along with Function overloading. The goal of generic programming is to make your code more flexible, so that it can work with all data types. The goal is to use templates to write code, that can be reused for data of any type without any adjustment.
+5) Ако вземете адреса на препратка, той ще бъде идентичен с адреса на променливата, към която препраща. В случай на показалец обаче ситуацията е различна.
+
+6) Ако указателите са разпределени в купчина, винаги има шанс и допълнително усилие да бъдат изтрити. Възможно е да има проблеми като изтичане на памет и висящи указатели. В случай на препратки обаче е добре и не е нужно да се занимавате с подобни проблеми.
+
+7) Указателят в стека има свой собствен адрес и размер на паметта, докато референцията в стека има същия адрес на паметта (като оригиналната променлива), но заема малко място в стека.
+
+8) Указателите могат да изпълняват различни аритметични операции, но няма такова нещо като референтна аритметика. (Въпреки това, както в &obj + 12, можете да вземете адреса на обект, посочен от препратка, и да извършите аритметика с указател върху него.)
+
+
+10. Типовете шаблони са важна част от генеричното програмиране в C++, заедно с претоварването на функциите. Целта на генеричното програмиране е да направи вашия код по-гъвкав, така че да може да работи с всички типове данни
+
+
+What is Generic Programming?
+Imagine you wanted to add two integers together, so you made a function called add(int, int). Now you also want to add two floats, so you create a function, add(float, float). And then you also want to add two doubles, so you make another function called add(double, double). And so on.
+
+Sounds boring and tedious right? That’s because it is. To counter this repetitiveness and redundancy, C++ introduced the concept of Generic Programming, with Templates types as it’s foundation.
+
+Generic Programming and Templates introduce the idea of type independent code, where we create a blueprint of sorts, and then pass in types to that blueprint. The code then automatically accounts for the types, and the correct operations are applied. Basically what I’m trying to say, we just make a standard blueprint, which works for any type that you pass into it.
+
+
+
+A template is a simple yet very powerful tool in C++. The simple idea is to pass the data type as a parameter so that we dont need to write the same code for different data types.
+
+Какво е генерично програмиране?
+Представете си, че искате да съберете две цели числа, така че сте направили функция, наречена add(int, int). Сега също искате да добавите две плаващи числа, така че създавате функция, add(float, float). И тогава вие също искате да добавите две двойни, така че правите друга функция, наречена add(double, double). И така нататък.
+
+Звучи скучно и досадно, нали? Това е така, защото е така. За да се противопостави на тази повторяемост и излишък, C++ въведе концепцията за генерично програмиране, с типове шаблони като основа.
+
+Генеричното програмиране и шаблони въвеждат идеята за код, независим от тип, където създаваме нещо като план и след това предаваме типове към този план. След това кодът автоматично отчита типовете и се прилагат правилните операции. По принцип това, което се опитвам да кажа, ние просто правим стандартен план, който работи за всеки тип, който подадете в него.
+
+
+
+Шаблонът е прост, но много мощен инструмент в C++. Простата идея е да предадем типа данни като параметър, така че да не се налага да пишем един и същ код за различни типове данни.
+ 
