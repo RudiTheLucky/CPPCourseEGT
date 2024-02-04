@@ -1,0 +1,201 @@
+Кино:
+Име
+адрес
+Списък със зали
+Зала:
+Име
+Брой места
+Списък с прожекции
+Прожекция:
+Име на филм
+Брой продадени билети
+
+
+Да се направят класовете описващи киното.
+В Кино да се реализират методи за:
+Добавяне на зала към списъка
+Търсене на прожекции за даден филм, по име на филма
+Коя прожекция е най-гледана в цялото кино (всички зали)
+Кой филм е бил най-гледан - трябва да се обходят всички прожекции за всеки филм и да се сумират постъпленията
+Коя зала е най-посещавана
+
+
+В Зала да има методи за:
+Добавяне на прожекция към списъка
+
+
+
+HALL.cpp FILE
+
+//
+// Created by Katya Daskalova on 1/10/24.
+//
+
+#include <iostream>
+#include "Hall.h"
+
+Hall::Hall(string hallName, int capacity) {
+    setName(hallName);
+    setSeats(capacity);
+}
+
+Hall::Hall(string name, int seats, vector<Screening> screeningList)
+    : screeningList(screeningList) {
+    setName(name);
+    setSeats(seats);
+}
+
+void Hall::addScreening(Screening obj) {
+    this->screeningList.push_back(obj);
+}
+
+void Hall::print() {
+    cout << " Hall is " << this->name << " with " << this->seats << " seats" << " ";
+    for(int i = 0; i < this->screeningList.size(); i++) {
+        this->screeningList.at(i).print();
+    }
+}
+
+vector<Screening> Hall::getScreeningList() {
+    return this->screeningList;
+}
+
+void Hall::setName(string name) {
+    this->name = name;
+}
+
+void Hall::setSeats(int capacity) {
+    this->seats = capacity;
+}
+
+HALL.h FILE
+
+#ifndef CINEMASYSTEM_HALL_H
+#define CINEMASYSTEM_HALL_H
+
+#include <string>
+#include <vector>
+#include "Screening.h"
+
+using namespace std;
+
+class Hall {
+public:
+    Hall(string, int);
+    Hall(string, int, vector<Screening>);
+    void setScreeningList(vector<Screening>);
+    vector<Screening> getScreeningList();
+    void addScreening(Screening);
+    void setName(string);
+    void setSeats(int);
+    void print();
+private:
+    string name;
+    int seats;
+    vector<Screening> screeningList;
+};
+
+#endif //CINEMASYSTEM_HALL_H
+//
+// Created by Katya Daskalova on 1/10/24.
+//
+
+#include <iostream>
+#include "Screening.h"
+
+Screening::Screening(string movieName, int tickets) {
+    setMovieName(movieName);
+    setSoldTickets(tickets);
+}
+
+void Screening::setMovieName(string movieName) {
+    if (movieName.length() > 5) {
+        this->movieName = movieName;
+    } else {
+        this->movieName = "";
+        cerr << "Movie name too short" << endl;
+    }
+}
+
+void Screening::setSoldTickets(int tickets) {
+    if (tickets >= 0) {
+        this->soldTickets = tickets;
+    } else {
+        this->soldTickets = 0;
+    }
+}
+
+string Screening::getMovieName() {
+    return this->movieName;
+}
+
+int Screening::getSoldTickets() {
+    return this->soldTickets;
+}
+
+void Screening::print() {
+    cout << " Projection is: "
+         << this->getMovieName() << " "
+         << this->getSoldTickets() << endl;
+}
+//
+// Created by Katya Daskalova on 1/10/24.
+//
+
+#ifndef CINEMASYSTEM_SCREENING_H
+#define CINEMASYSTEM_SCREENING_H
+
+#include <string>
+using namespace std;
+
+class Screening {
+public:
+    Screening(string, int);
+    void setMovieName(string);
+    void setSoldTickets(int);
+    string getMovieName();
+    int getSoldTickets();
+    void print();
+private:
+    string movieName;
+    int soldTickets;
+};
+
+#endif //CINEMASYSTEM_SCREENING_H
+
+
+#include <iostream>
+#include "Screening.h"
+#include "Hall.h"
+
+
+int main() {
+
+    Screening sc1("Star Wars", 10);
+    Screening sc2("The Godfather", 30);
+
+    vector<Screening> screenings;
+
+    screenings.push_back(sc1);
+    screenings.push_back(sc2);
+
+    Hall h1("Hall 8", 80, screenings);
+//    Hall h2("Hall 9", 90, screenings);
+    h1.print();
+
+    Screening sc3("Indian Jones", 40);
+    Screening sc4("Dune 2", 33);
+
+    vector<Screening> otherScreenings;
+    otherScreenings.push_back(sc3);
+    otherScreenings.push_back(sc4);
+    Hall h3("Hall 10", 100, otherScreenings);
+    h3.print();
+
+    Screening sc5("Nemo 2", 55);
+    h3.addScreening(sc5);
+    h3.print();
+
+
+    return 0;
+}

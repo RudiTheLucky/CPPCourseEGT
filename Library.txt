@@ -1,0 +1,117 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Book
+{
+
+public:
+Book(string, string, string);
+void display();
+
+private:
+string title;
+string autor;
+string ISBN;
+
+};
+
+#include <iostream>
+#include <string>
+#include "Book.h"
+
+using namespace std;
+
+Book::Book(string t, string a, string isbn) : title(t), autor(a), ISBN(isbn)
+{
+	
+}
+
+void Book::display()
+{
+	cout << "Book title " << this->title
+		<< " written by " << this->autor
+	
+
+#pragma once
+
+#include <iostream>
+#include <string>
+#include "Book.h"
+
+using namespace std;
+
+class Member
+{
+public:
+
+	Member(string, int, string);
+	void display();
+	void borrowBook(Book*);
+
+private:
+
+	string name;
+	int age;
+	string memberID;
+
+};
+
+#include <iostream>
+#include <string>
+
+#include "Member.h"
+
+using namespace std;
+
+Member::Member(string n, int a, string id) : name(n), age(a), memberID(id)
+{
+}
+
+void Member::display()
+{
+	cout << "Member with ID: " << this->memberID
+		<< " named " << this->name
+		<< " and age of " << this->age << endl;
+}
+
+void Member::borrowBook(Book* b)
+{
+	cout << "Member with ID " << this->memberID << " has borrowed book with ";
+	b->display();
+	
+}
+
+
+// Purpose of the function
+//
+//
+
+#include <iostream>
+#include <string>
+#include "Book.h"
+#include "Member.h"
+
+using namespace std;
+
+int main()
+{
+    Book b1("Book1", "Author1", "bookID1");
+    Book b2("Book2", "Author2", "bookID2");
+
+    Book bookArr[2] {b1, b2};
+
+    Book* bPtr1 = &b1;
+    Book* bPtr2 = &b2;
+
+    Member m1("Member1", 29, "memberID1");
+    Member m2("Member2", 22, "memberID2");
+
+    Member memberArr[2]{m1, m2};
+
+    memberArr[1].borrowBook(bPtr1);
+    memberArr[0].borrowBook(bPtr2);
+
+    return 0;
+}

@@ -1,0 +1,121 @@
+#pragma once
+#include <iostream>
+#include <string>
+#include "Employee.h"
+
+using namespace std;
+
+class Department
+{
+public:
+
+	Department(string);
+	void addEmployee(Employee*);
+	void displayEmployees();
+
+private:
+
+	string departmentName;
+	Employee *employees[10];
+	int numEmployees;
+
+};
+
+
+#include <iostream>
+#include <string>
+#include "Department.h"
+
+using namespace std;
+
+Department::Department(string n) : departmentName(n), numEmployees(0)
+{
+}
+
+void Department::addEmployee(Employee* e)
+{
+	this->employees[numEmployees] = e;
+	this->numEmployees += 1;
+}
+
+void Department::displayEmployees()
+{
+	for (int i = 0; i < this->numEmployees; i++)
+	{
+		this->employees[i]->display();
+	}
+}
+
+
+#pragma once
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Employee
+{
+public:
+
+	Employee(string, int, string);
+	void display();
+
+private:
+
+	string name;
+	int employeeID;
+	string position;
+
+};
+
+#include <iostream>
+#include <string>
+#include "Employee.h"
+
+using namespace std;
+
+Employee::Employee(string n, int id, string p) : name(n), employeeID(id), position(p)
+{
+}
+
+void Employee::display()
+{
+	cout << " Employee with ID: " << this->employeeID
+		<< " name " << this->name << " and position " << this->position << endl;
+}
+
+
+// Main function
+//
+
+#include <iostream>
+#include <string>
+#include "Employee.h"
+#include "Department.h"
+
+
+using namespace std;
+
+int main()
+{
+    Employee e1("EmpName1", 1, "Department Director");
+    Employee e2("EmpName2", 2, "Project Manager");
+    Employee e3("EmpName3", 3, "Team Lead");
+    Employee e4("EmpName4", 4, "Programmer");
+    Employee e5("EmpName5", 5, "Programmer");
+
+    Employee empArr[]{ e1, e2, e3, e4, e5 };
+
+    Department d1("Department 1");
+    Department d2("Department 2");
+
+    Employee* ePtr1 = &e1;
+    Employee* ePtr2 = &e2;
+
+    d1.addEmployee(ePtr1);
+    d1.addEmployee(ePtr2);
+
+    d1.displayEmployees();
+
+    return 0;
+}

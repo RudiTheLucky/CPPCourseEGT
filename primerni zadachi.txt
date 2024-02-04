@@ -1,0 +1,292 @@
+Packages Task
+
+Address.h
+
+#ifndef ADDRESS_H
+#define ADDRESS_H
+
+#include <string>
+
+class Address {
+private:
+    std::string name;
+    std::string street;
+public:
+    Address(const std::string& name, const std::string& street);
+    std::string getName() const;
+    std::string getStreet() const;
+};
+
+#endif // ADDRESS_H
+
+
+
+Address.cpp
+
+#include "Address.h"
+
+Address::Address(const std::string& name, const std::string& street) : name(name), street(street) {}
+
+std::string Address::getName() const {
+    return name;
+}
+
+std::string Address::getStreet() const {
+    return street;
+}
+
+Package.h
+
+#ifndef PACKAGE_H
+#define PACKAGE_H
+
+#include "Address.h"
+
+class Package {
+private:
+    Address sender;
+    Address recipient;
+    double weight;
+    double costPerOunce;
+
+public:
+    Package(const Address& sender, const Address& recipient, double weight, double costPerOunce);
+    virtual double calculateCost() const;
+    void printLabel() const;
+};
+
+#endif // PACKAGE_H
+
+
+Package.cpp
+#include "Package.h"
+#include <iostream>
+
+Package::Package(const Address& sender, const Address& recipient, double weight, double costPerOunce)
+    : sender(sender), recipient(recipient), weight(weight), costPerOunce(costPerOunce) {}
+
+double Package::calculateCost() const {
+    return weight * costPerOunce;
+}
+
+void Package::printLabel() const {
+    std::cout << "Sender: " << sender.getName() << "\n"
+              << sender.getStreet() << "\n\n"
+              << "Recipient: " << recipient.getName() << "\n"
+              << recipient.getStreet() << "\n\n";
+}
+
+
+TwoDayPackage.h
+
+#ifndef TWODAYPACKAGE_H
+#define TWODAYPACKAGE_H
+
+#include "Package.h"
+
+class TwoDayPackage : public Package {
+private:
+    double flatFee;
+
+public:
+    TwoDayPackage(const Address& sender, const Address& recipient, double weight, double costPerOunce, double flatFee);
+    double calculateCost() const override;
+};
+
+#endif // TWODAYPACKAGE_H
+
+
+
+TwoDayPackage.cpp
+
+#include "TwoDayPackage.h"
+
+TwoDayPackage::TwoDayPackage(const Address& sender, const Address& recipient, double weight, double costPerOunce, double flatFee)
+    : Package(sender, recipient, weight, costPerOunce), flatFee(flatFee) {}
+
+double TwoDayPackage::calculateCost() const {
+    return Package::calculateCost() + flatFee;
+}
+
+
+OvernightPackage.h
+
+#ifndef OVERNIGHTPACKAGE_H
+#define OVERNIGHTPACKAGE_H
+
+#include "Package.h"
+
+class OvernightPackage : public Package {
+private:
+    double additionalFeePerOunce;
+
+public:
+    OvernightPackage(const Address& sender, const Address& recipient, double weight, double costPerOunce, double additionalFeePerOunce);
+    double calculateCost() const override;
+};
+
+#endif // OVERNIGHTPACKAGE_H
+
+
+OvernightPackage.cpp
+
+#include "OvernightPackage.h"
+
+OvernightPackage::OvernightPackage(const Address& sender, const Address& recipient, double weight, double costPerOunce, double additionalFeePerOunce)
+    : Package(sender, recipient, weight, costPerOunce), additionalFeePerOunce(additionalFeePerOunce) {}
+
+double OvernightPackage::calculateCost() const {
+    return Package::calculateCost() + additionalFeePerOunce * weight;
+}
+
+
+Main.cpp
+
+
+#include <iostream>
+#include <vector>
+#include "Package.h"
+#include "TwoDayPackage.h"
+#include "OvernightPackage.h"
+
+int main() {
+    // Creating instances of Package, TwoDayPackage, and OvernightPackage
+    Address sender1("John Doe", "123 Main St");
+    Address recipient1("Jane Smith", "456 Broad St");
+
+    Package package1(sender1, recipient1, 5.0, 1.5);
+    TwoDayPackage twoDayPackage1(sender1, recipient1, 5.0, 1.5, 2.0);
+    OvernightPackage overnightPackage1(sender1, recipient1, 5.0, 1.5, 0.5);
+
+    // Creating a vector of Package pointers
+    std::vector<Package*> packages;
+    packages.push_back(&package1);
+    packages.push_back(&twoDayPackage1);
+    packages.push_back(&overnightPackage1);
+
+    // Looping through the vector to process the Packages polymorphically
+    double totalShippingCost = 0.0;
+    for (const auto& package : packages) {
+        // Printing address information
+        package->printLabel();
+
+        // Calculating and printing shipping cost
+        double cost = package->calculateCost();
+        totalShippingCost += cost;
+        std::cout << "Shipping Cost: $" << cost << "\n\n";
+    }
+
+    // Displaying total shipping cost
+    std::cout << "Total Shipping Cost for all Packages: $" << totalShippingCost << "\n";
+
+    return 0;
+}
+
+
+
+Create a class called Account that a bank might use to represent customers' bank accounts. Your class should include one data member of type int to represent the account balance. Your class should provide a constructor that receives an initial balance and uses it to initialize the data member. The constructor should validate the initial balance to ensure that it is greater than or equal to 0. If not, the balance should be set to 0 and the constructor should display an error message, indicating that the initial balance was invalid.
+The class should provide three member functions. Member function credit should add an amount to the current balance. Member function debit should withdraw money from the Account and should ensure that the debit amount does not exceed the Account's balance. If it does, the balance should be left unchanged and the function should print a message indicating "Debit amount exceeded account balance." Member function getBalance should return the current balance. Create a program that creates two Account objects and tests the member functions of class Account.
+
+
+
+
+Solution.
+
+
+
+We are given a school. In the school there are classes of students. Each class has a set of teachers. Each teacher teaches a set of disciplines. Students have name and unique class number. Classes have unique text identifier. Teachers have name and title. Disciplines have name, number of lectures and number of exercises.
+2. Define C++ classes for the school (School, Class, Student, Teacher, Discipline). Keep the member fields private. Add constructors and accessor methods. Write a testing class to construct and print a sample school.
+
+
+
+Solution.
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+// Header за базовия клас Car
+class Car {
+protected:
+    std::string brand;
+    std::string model;
+    std::string type;
+    std::string color;
+    std::string chassisNumber;
+    std::string carNumber;
+    double fuelConsumption;
+
+public:
+    Car(const std::string& brand, const std::string& model, const std::string& type,
+        const std::string& color, const std::string& chassisNumber, const std::string& carNumber,
+        double fuelConsumption)
+        : brand(brand), model(model), type(type), color(color), chassisNumber(chassisNumber),
+          carNumber(carNumber), fuelConsumption(fuelConsumption) {}
+
+    virtual double calculateRentalCost(double distance) const = 0; // Чисто виртуална функция
+};
+
+// Header за класа FamilyCar
+class FamilyCar : public Car {
+private:
+    double usageFee;
+
+public:
+    FamilyCar(const std::string& brand, const std::string& model, const std::string& type,
+              const std::string& color, const std::string& chassisNumber, const std::string& carNumber,
+              double fuelConsumption, double usageFee)
+        : Car(brand, model, type, color, chassisNumber, carNumber, fuelConsumption), usageFee(usageFee) {}
+
+    double calculateRentalCost(double distance) const override {
+        double distanceCoefficient = (distance < 500) ? 0.7 : 0.4;
+        return usageFee * distanceCoefficient;
+    }
+};
+
+// Header за класа LuxuryCar
+class LuxuryCar : public Car {
+private:
+    double usageFee;
+    double luxuryCoefficient;
+
+public:
+    LuxuryCar(const std::string& brand, const std::string& model, const std::string& type,
+              const std::string& color, const std::string& chassisNumber, const std::string& carNumber,
+              double fuelConsumption, double usageFee, double luxuryCoefficient)
+        : Car(brand, model, type, color, chassisNumber, carNumber, fuelConsumption),
+          usageFee(usageFee), luxuryCoefficient(luxuryCoefficient) {}
+
+    double calculateRentalCost(double distance) const override {
+        double distanceCoefficient = (distance < 200) ? 0.6 : 0.4;
+        return (usageFee * distanceCoefficient) + (luxuryCoefficient);
+    }
+};
+
+int main() {
+    // Създаване на обекти от всеки тип
+    FamilyCar familyCar1("Toyota", "Camry", "Sedan", "Blue", "12345", "ABC123", 10.5, 30.0);
+    FamilyCar familyCar2("Ford", "Focus", "Hatchback", "Red", "67890", "XYZ456", 12.0, 25.0);
+
+    LuxuryCar luxuryCar1("Mercedes", "S-Class", "Luxury", "Black", "11111", "DEF789", 15.5, 50.0, 100.0);
+    LuxuryCar luxuryCar2("BMW", "7 Series", "Luxury", "White", "22222", "GHI012", 14.0, 45.0, 50.0);
+
+    // Съхранение на обектите във вектор
+    std::vector<Car*> cars;
+    cars.push_back(&familyCar1);
+    cars.push_back(&familyCar2);
+    cars.push_back(&luxuryCar1);
+    cars.push_back(&luxuryCar2);
+
+    // Пример за изчисляване на цена за наем за всеки автомобил
+    for (const auto& car : cars) {
+        std::cout << "Car: " << car->brand << " " << car->model << "\n";
+        double distance;
+        std::cout << "Enter distance traveled: ";
+        std::cin >> distance;
+        double rentalCost = car->calculateRentalCost(distance);
+        std::cout << "Rental cost: " << rentalCost << " BGN\n\n";
+    }
+
+    return 0;
+}
