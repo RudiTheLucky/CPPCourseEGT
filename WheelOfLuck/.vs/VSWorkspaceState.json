@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WheelOfLuck",
+    "\\WheelOfLuck\\include",
+    "\\WheelOfLuck\\SDL2",
+    "\\WheelOfLuck\\SDL2_ttf",
+    "\\WheelOfLuck\\src"
+  ],
+  "SelectedNode": "\\WheelOfLuck\\src\\main.cpp",
+  "PreviewInSolutionExplorer": false
+}
